@@ -7,6 +7,9 @@ import React, { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Smartphone, MapPin, Navigation, Car, CreditCard, Clock, Map, TrendingUp, ShieldCheck, ChevronRight, QrCode } from 'lucide-react';
 
+const USER_APK_URL = '/move_user_release1.apk';
+const DRIVER_APK_URL = '/mover_driver1.apk';
+
 // Reusable Components
 const AppLogo = ({ className = "w-10 h-10", dark = false }: { className?: string; dark?: boolean }) => {
   const carColor = dark ? "#FFFFFF" : "#121212";
@@ -73,7 +76,7 @@ export default function App() {
           <a href="#driver" className="hover:text-taxi-yellow transition-colors">For Drivers</a>
           <a href="#safety" className="hover:text-taxi-yellow transition-colors">Safety</a>
         </div>
-        <a href="https://github.com/sumitkumards07/Moveweb/releases/download/v1.0.0/move_user_release1.apk" download className="bg-taxi-yellow text-asphalt-black px-5 py-2.5 rounded-full font-bold text-sm hover:bg-yellow-400 transition-colors inline-block text-center">
+        <a href={USER_APK_URL} download className="bg-taxi-yellow text-asphalt-black px-5 py-2.5 rounded-full font-bold text-sm hover:bg-yellow-400 transition-colors inline-block text-center">
           Get the App
         </a>
       </nav>
@@ -100,8 +103,8 @@ export default function App() {
               One ecosystem, two apps. Ride seamlessly with <strong className="text-white">Move</strong>, or earn on your schedule with <strong className="text-white">Mover</strong>.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <AppStoreButton href="https://github.com/sumitkumards07/Moveweb/releases/download/v1.0.0/move_user_release1.apk" text="Move (Users)" subText="Download" />
-              <AppStoreButton href="https://github.com/sumitkumards07/Moveweb/releases/download/v1.0.0/mover_driver1.apk" text="Mover (Drivers)" subText="Download" dark />
+              <AppStoreButton href={USER_APK_URL} text="Move (Users)" subText="Download" />
+              <AppStoreButton href={DRIVER_APK_URL} text="Mover (Drivers)" subText="Download" dark />
             </div>
           </motion.div>
 
@@ -399,11 +402,11 @@ export default function App() {
               Join millions of users and drivers in the network today. It takes less than 2 minutes to get started.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href="https://github.com/sumitkumards07/Moveweb/releases/download/v1.0.0/move_user_release1.apk" download className="inline-block text-center bg-asphalt-black text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-900 transition-transform hover:scale-105 active:scale-95 shadow-xl">
+              <a href={USER_APK_URL} download className="inline-block text-center bg-asphalt-black text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-900 transition-transform hover:scale-105 active:scale-95 shadow-xl">
                 Get the App
               </a>
-              <a href="https://github.com/sumitkumards07/Moveweb/releases/download/v1.0.0/mover_driver1.apk" download className="inline-block text-center bg-transparent border-2 border-asphalt-black text-asphalt-black px-8 py-4 rounded-xl font-bold text-lg hover:bg-black/5 transition-transform hover:scale-105 active:scale-95">
-                Sign up to Drive
+              <a href={DRIVER_APK_URL} download className="inline-block text-center bg-transparent border-2 border-asphalt-black text-asphalt-black px-8 py-4 rounded-xl font-bold text-lg hover:bg-black/5 transition-transform hover:scale-105 active:scale-95">
+                Download Driver APK
               </a>
             </div>
           </div>
