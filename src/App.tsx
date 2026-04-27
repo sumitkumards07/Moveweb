@@ -32,14 +32,14 @@ const AppLogo = ({ className = "w-10 h-10", dark = false }: { className?: string
   );
 };
 
-const AppStoreButton = ({ text, subText, dark = false }: { text: string, subText: string, dark?: boolean }) => (
-  <button className={`flex items-center gap-3 px-6 py-3 rounded-xl font-semibold transition-all hover:scale-105 active:scale-95 ${dark ? 'bg-asphalt-black text-white hover:bg-gray-900 border border-gray-800' : 'bg-white text-asphalt-black hover:bg-gray-100'}`}>
+const AppStoreButton = ({ text, subText, dark = false, href }: { text: string, subText: string, dark?: boolean, href?: string }) => (
+  <a href={href} download className={`flex items-center gap-3 px-6 py-3 rounded-xl font-semibold transition-all hover:scale-105 active:scale-95 ${dark ? 'bg-asphalt-black text-white hover:bg-gray-900 border border-gray-800' : 'bg-white text-asphalt-black hover:bg-gray-100'}`}>
     <Smartphone size={24} />
     <div className="text-left">
       <div className="text-xs font-medium opacity-80">{subText}</div>
       <div className="text-sm border-t border-transparent leading-tight">{text}</div>
     </div>
-  </button>
+  </a>
 );
 
 const FeatureCard = ({ icon: Icon, title, description, dark = false }: { icon: any, title: string, description: string, dark?: boolean }) => (
@@ -73,9 +73,9 @@ export default function App() {
           <a href="#driver" className="hover:text-taxi-yellow transition-colors">For Drivers</a>
           <a href="#safety" className="hover:text-taxi-yellow transition-colors">Safety</a>
         </div>
-        <button className="bg-taxi-yellow text-asphalt-black px-5 py-2.5 rounded-full font-bold text-sm hover:bg-yellow-400 transition-colors">
+        <a href="/move_user_release.apk" download className="bg-taxi-yellow text-asphalt-black px-5 py-2.5 rounded-full font-bold text-sm hover:bg-yellow-400 transition-colors inline-block text-center">
           Get the App
-        </button>
+        </a>
       </nav>
 
       {/* Hero Section */}
@@ -100,8 +100,8 @@ export default function App() {
               One ecosystem, two apps. Ride seamlessly with <strong className="text-white">Move</strong>, or earn on your schedule with <strong className="text-white">Mover</strong>.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <AppStoreButton text="Move (Users)" subText="Download" />
-              <AppStoreButton text="Mover (Drivers)" subText="Download" dark />
+              <AppStoreButton href="/move_user_release.apk" text="Move (Users)" subText="Download" />
+              <AppStoreButton href="/moverr_driver_release.apk" text="Mover (Drivers)" subText="Download" dark />
             </div>
           </motion.div>
 
@@ -399,12 +399,12 @@ export default function App() {
               Join millions of users and drivers in the network today. It takes less than 2 minutes to get started.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button className="bg-asphalt-black text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-900 transition-transform hover:scale-105 active:scale-95 shadow-xl">
+              <a href="/move_user_release.apk" download className="inline-block text-center bg-asphalt-black text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-900 transition-transform hover:scale-105 active:scale-95 shadow-xl">
                 Get the App
-              </button>
-              <button className="bg-transparent border-2 border-asphalt-black text-asphalt-black px-8 py-4 rounded-xl font-bold text-lg hover:bg-black/5 transition-transform hover:scale-105 active:scale-95">
+              </a>
+              <a href="/moverr_driver_release.apk" download className="inline-block text-center bg-transparent border-2 border-asphalt-black text-asphalt-black px-8 py-4 rounded-xl font-bold text-lg hover:bg-black/5 transition-transform hover:scale-105 active:scale-95">
                 Sign up to Drive
-              </button>
+              </a>
             </div>
           </div>
 
