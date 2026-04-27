@@ -7,8 +7,8 @@ import React, { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Smartphone, MapPin, Navigation, Car, CreditCard, Clock, Map, TrendingUp, ShieldCheck, ChevronRight, QrCode } from 'lucide-react';
 
-const USER_APK_URL = '/move_user_release1.apk';
-const DRIVER_APK_URL = '/mover_driver1.apk';
+const USER_APK_URL = 'https://github.com/sumitkumards07/Moveweb/releases/download/v1.0.0/move_user_release1.apk';
+const DRIVER_APK_URL = 'https://github.com/sumitkumards07/Moveweb/releases/download/v1.0.0/mover_driver1.apk';
 
 // Reusable Components
 const AppLogo = ({ className = "w-10 h-10", dark = false }: { className?: string; dark?: boolean }) => {
