@@ -432,7 +432,7 @@ export default function App() {
             <span className="ml-4 opacity-70">© 2026 Move Technologies Inc.</span>
           </div>
           <div className="flex gap-6 opacity-70">
-            <a href="#" className="hover:opacity-100 transition-opacity">Privacy</a>
+            <a href="/privacy_policy.html" className="hover:opacity-100 transition-opacity">Privacy</a>
             <a href="#" className="hover:opacity-100 transition-opacity">Terms</a>
             <a href="#" className="hover:opacity-100 transition-opacity">Cities</a>
           </div>
