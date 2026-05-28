@@ -67,7 +67,7 @@ export default function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 lg:px-12 backdrop-blur-md bg-asphalt-black/80 border-b border-white/5">
         <div className="flex items-center gap-2">
           <AppLogo className="w-10 h-10" dark={true} />
-          <span className="text-2xl font-bold tracking-tight">Mover<span className="text-taxi-yellow">.</span></span>
+          <span className="text-2xl font-bold tracking-tight">Tirth Travels<span className="text-taxi-yellow">.</span></span>
         </div>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">
           <a href="#benefits" className="hover:text-taxi-yellow transition-colors">Benefits</a>
@@ -100,10 +100,10 @@ export default function App() {
               Start Earning.
             </h1>
             <p className="text-lg lg:text-xl text-gray-300 mb-10 max-w-lg leading-relaxed">
-              Take control of your income. Drive with <strong className="text-white">Mover</strong> to enjoy flexible hours, instant payouts, and the best rates in your city.
+              Take control of your income. Drive with <strong className="text-white">Tirth Travels</strong> to enjoy flexible hours, instant payouts, and the best rates in your city.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <AppStoreButton href={DRIVER_APK_URL} text="Download Mover APK" subText="Get the Driver App" />
+              <AppStoreButton href={DRIVER_APK_URL} text="Download Tirth Travels APK" subText="Get the Driver App" />
             </div>
           </motion.div>
 
@@ -176,7 +176,7 @@ export default function App() {
       <section id="benefits" className="py-24 bg-[#F8F9FA] text-asphalt-black relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight">Why Drive With Mover?</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight">Why Drive With Tirth Travels?</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto font-medium">
               We've built our platform around what drivers need most. More earnings, better tools, and complete flexibility.
             </p>
@@ -353,8 +353,8 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12 mt-20 pt-8 border-t border-black/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm font-medium">
           <div className="flex items-center gap-2 text-asphalt-black">
             <AppLogo className="w-8 h-8" dark={false} />
-            <span className="font-bold tracking-tight text-xl">Mover<span className="text-white">.</span></span>
-            <span className="ml-4 opacity-70">© 2026 Move Technologies Inc.</span>
+            <span className="font-bold tracking-tight text-xl">Tirth Travels<span className="text-white">.</span></span>
+            <span className="ml-4 opacity-70">© 2026 Tirth Travels.</span>
           </div>
           <div className="flex gap-6 opacity-70">
             <a href="/privacy_policy.html" className="hover:opacity-100 transition-opacity">Privacy</a>
