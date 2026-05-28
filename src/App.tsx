@@ -7,9 +7,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Smartphone, MapPin, Navigation, Car, CreditCard, Clock, Map, TrendingUp, ShieldCheck, ChevronRight, QrCode } from 'lucide-react';
 
-const USER_APK_URL = 'https://github.com/sumitkumards07/Moveweb/releases/download/v1.0.0/move_user_release.apk';
-const DRIVER_APK_URL = 'https://github.com/sumitkumards07/Moveweb/releases/download/v1.0.0/mover_driver.apk';
-const APK_VERSION = '2026-04-28';
+const DRIVER_APK_URL = '/app-release.apk';
 
 // Reusable Components
 const AppLogo = ({ className = "w-10 h-10", dark = false }: { className?: string; dark?: boolean }) => {
@@ -37,11 +35,11 @@ const AppLogo = ({ className = "w-10 h-10", dark = false }: { className?: string
 };
 
 const AppStoreButton = ({ text, subText, dark = false, href }: { text: string, subText: string, dark?: boolean, href?: string }) => (
-  <a href={href} download className={`flex items-center gap-3 px-6 py-3 rounded-xl font-semibold transition-all hover:scale-105 active:scale-95 ${dark ? 'bg-asphalt-black text-white hover:bg-gray-900 border border-gray-800' : 'bg-white text-asphalt-black hover:bg-gray-100'}`}>
-    <Smartphone size={24} />
+  <a href={href} download className={`flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 active:scale-95 ${dark ? 'bg-asphalt-black text-white hover:bg-gray-900 border border-gray-800' : 'bg-taxi-yellow text-asphalt-black hover:bg-yellow-400'}`}>
+    <Smartphone size={28} />
     <div className="text-left">
-      <div className="text-xs font-medium opacity-80">{subText}</div>
-      <div className="text-sm border-t border-transparent leading-tight">{text}</div>
+      <div className="text-sm font-medium opacity-80">{subText}</div>
+      <div className="text-xl border-t border-transparent leading-tight">{text}</div>
     </div>
   </a>
 );
@@ -61,7 +59,6 @@ const FeatureCard = ({ icon: Icon, title, description, dark = false }: { icon: a
 
 export default function App() {
   const { scrollYProgress } = useScroll();
-  const yHeroOffset = useTransform(scrollYProgress, [0, 1], [0, 300]);
   const opacityHero = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   return (
@@ -70,111 +67,65 @@ export default function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 lg:px-12 backdrop-blur-md bg-asphalt-black/80 border-b border-white/5">
         <div className="flex items-center gap-2">
           <AppLogo className="w-10 h-10" dark={true} />
-          <span className="text-2xl font-bold tracking-tight">Move<span className="text-taxi-yellow">.</span></span>
+          <span className="text-2xl font-bold tracking-tight">Mover<span className="text-taxi-yellow">.</span></span>
         </div>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">
-          <a href="#user" className="hover:text-taxi-yellow transition-colors">For Users</a>
-          <a href="#driver" className="hover:text-taxi-yellow transition-colors">For Drivers</a>
+          <a href="#benefits" className="hover:text-taxi-yellow transition-colors">Benefits</a>
+          <a href="#earnings" className="hover:text-taxi-yellow transition-colors">Earnings</a>
           <a href="#safety" className="hover:text-taxi-yellow transition-colors">Safety</a>
         </div>
-        <a href={`${USER_APK_URL}?v=${APK_VERSION}`} download className="bg-taxi-yellow text-asphalt-black px-5 py-2.5 rounded-full font-bold text-sm hover:bg-yellow-400 transition-colors inline-block text-center">
-          Get the App
+        <a href={DRIVER_APK_URL} download className="bg-taxi-yellow text-asphalt-black px-5 py-2.5 rounded-full font-bold text-sm hover:bg-yellow-400 transition-colors inline-block text-center">
+          Download App
         </a>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 lg:px-12 overflow-hidden bg-asphalt-black">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 lg:px-12 overflow-hidden bg-asphalt-black min-h-screen flex items-center">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-20"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-asphalt-black via-asphalt-black/80 to-transparent"></div>
+        
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10 w-full">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="z-10"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-taxi-yellow text-sm font-medium mb-6">
               <span className="w-2 h-2 rounded-full bg-taxi-yellow animate-pulse"></span>
-              Live in 50+ Cities
+              Join Thousands of Drivers
             </div>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 tracking-tight">
-              Your City,<br/>
-              <span className="text-taxi-yellow text-glow">Your Pace.</span><br/>
-              Get Moving.
+              Your Car.<br/>
+              <span className="text-taxi-yellow text-glow">Your Rules.</span><br/>
+              Start Earning.
             </h1>
-            <p className="text-lg lg:text-xl text-gray-400 mb-10 max-w-lg leading-relaxed">
-              One ecosystem, two apps. Ride seamlessly with <strong className="text-white">Move</strong>, or earn on your schedule with <strong className="text-white">Mover</strong>.
+            <p className="text-lg lg:text-xl text-gray-300 mb-10 max-w-lg leading-relaxed">
+              Take control of your income. Drive with <strong className="text-white">Mover</strong> to enjoy flexible hours, instant payouts, and the best rates in your city.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <AppStoreButton href={`${USER_APK_URL}?v=${APK_VERSION}`} text="Move (Users)" subText="Download" />
-              <AppStoreButton href={`${DRIVER_APK_URL}?v=${APK_VERSION}`} text="Mover (Drivers)" subText="Download" dark />
+              <AppStoreButton href={DRIVER_APK_URL} text="Download Mover APK" subText="Get the Driver App" />
             </div>
           </motion.div>
 
-          {/* 3D Mockup Area */}
+          {/* 3D Mockup Area - Focusing only on the Driver App */}
           <div className="relative h-[500px] lg:h-[600px] flex justify-center items-center perspective-[2000px]">
             {/* Background glowing orb */}
             <div className="absolute inset-0 bg-taxi-yellow/20 blur-[100px] rounded-full w-3/4 h-3/4 m-auto"></div>
             
-            {/* Left Phone - Move App */}
+            {/* Center Phone - Mover App */}
             <motion.div
-              initial={{ opacity: 0, y: 50, rotateY: 20, rotateX: 10, rotateZ: -5 }}
-              animate={{ opacity: 1, y: 0, rotateY: 15, rotateX: 5, rotateZ: -5 }}
+              initial={{ opacity: 0, y: 100, rotateY: 0, rotateX: 10, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, rotateY: -10, rotateX: 5, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
-              style={{ x: -60, zOffset: 100 } as any}
-              className="absolute w-[240px] h-[500px] bg-white rounded-[2.5rem] border-[8px] border-gray-100 shadow-2xl overflow-hidden z-10"
-            >
-              <div className="absolute top-0 w-full h-6 bg-gray-100 rounded-b-2xl flex justify-center items-end pb-1 z-20">
-                <div className="w-16 h-1.5 bg-gray-300 rounded-full"></div>
-              </div>
-              <div className="relative w-full h-full bg-gray-50 flex flex-col pt-8">
-                {/* Fake Map */}
-                <div className="absolute inset-0 bg-[#E8F0F2] overflow-hidden">
-                  {/* Grid lines */}
-                  <div className="w-full h-full" style={{ backgroundImage: 'linear-gradient(#d1e3e8 1px, transparent 1px), linear-gradient(90deg, #d1e3e8 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
-                  {/* Route path */}
-                  <svg className="absolute inset-0 w-full h-full" viewBox="0 0 240 500">
-                    <path d="M 40,300 C 60,200 180,250 160,100" fill="none" stroke="#FFCC00" strokeWidth="6" strokeDasharray="8 4" className="opacity-80"/>
-                  </svg>
-                  <motion.div 
-                    animate={{ scale: [1, 1.2, 1] }} 
-                    transition={{ repeat: Infinity, duration: 2 }}
-                    className="absolute top-[85px] left-[145px] text-asphalt-black drop-shadow-md"
-                  >
-                    <MapPin fill="#FFCC00" size={32} />
-                  </motion.div>
-                </div>
-                {/* Overlay Sheet */}
-                <div className="absolute bottom-0 w-full h-[200px] bg-white rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)] p-5 flex flex-col gap-4">
-                  <div className="w-10 h-1 bg-gray-200 rounded-full mx-auto mb-2"></div>
-                  <div className="font-bold text-asphalt-black text-lg">Finding your ride...</div>
-                  <div className="flex items-center gap-4 bg-gray-50 p-3 rounded-xl border border-gray-100">
-                    <div className="w-10 h-10 bg-taxi-yellow/20 rounded-full flex items-center justify-center text-taxi-yellow">
-                      <Car size={20} />
-                    </div>
-                    <div>
-                      <div className="text-sm font-bold text-asphalt-black">Premium</div>
-                      <div className="text-xs text-gray-500">3 mins away</div>
-                    </div>
-                    <div className="ml-auto font-bold text-asphalt-black">₹150</div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Right Phone - Mover App */}
-            <motion.div
-              initial={{ opacity: 0, y: 100, rotateY: -20, rotateX: 10, rotateZ: 5 }}
-              animate={{ opacity: 1, y: 30, rotateY: -15, rotateX: 5, rotateZ: 5 }}
-              transition={{ duration: 1, delay: 0.4 }}
-              style={{ x: 60, zOffset: -100 } as any}
-              className="absolute w-[240px] h-[500px] bg-asphalt-black rounded-[2.5rem] border-[8px] border-gray-900 shadow-2xl overflow-hidden shadow-taxi-yellow/10"
+              className="absolute w-[280px] h-[580px] bg-asphalt-black rounded-[2.5rem] border-[8px] border-gray-900 shadow-2xl overflow-hidden shadow-taxi-yellow/20 z-20"
             >
               <div className="absolute top-0 w-full h-6 bg-gray-900 rounded-b-2xl flex justify-center items-end pb-1 z-20">
                 <div className="w-16 h-1.5 bg-gray-700 rounded-full"></div>
               </div>
               <div className="relative w-full h-full flex flex-col px-4 pt-10">
                 <div className="flex justify-between items-center mb-6">
-                  <div className="w-10 h-10 bg-gray-800 rounded-full overflow-hidden flex items-center justify-center">
-                    <div className="w-full h-full bg-gradient-to-tr from-taxi-yellow to-orange-400"></div>
+                  <div className="w-10 h-10 bg-gray-800 rounded-full overflow-hidden flex items-center justify-center border border-gray-700">
+                    <Car className="text-taxi-yellow" size={20} />
                   </div>
                   <div className="bg-green-500/20 text-green-400 flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold font-mono">
                     <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
@@ -183,11 +134,14 @@ export default function App() {
                 </div>
                 
                 <div className="flex flex-col items-center justify-center flex-1">
-                  <div className="text-gray-400 text-sm font-medium mb-1">Today's Earnings</div>
-                  <div className="text-4xl font-black text-white mb-8 tracking-tighter">₹4,250<span className="text-xl text-gray-500">.00</span></div>
+                  <div className="text-gray-400 text-sm font-medium mb-1 uppercase tracking-widest">Today's Earnings</div>
+                  <div className="text-5xl font-black text-white mb-2 tracking-tighter">₹4,250<span className="text-2xl text-gray-500">.00</span></div>
+                  <div className="text-green-400 flex items-center gap-1 text-sm font-medium mb-8">
+                    <TrendingUp size={14} /> +15% vs yesterday
+                  </div>
                   
                   {/* Fake Chart */}
-                  <div className="w-full h-32 flex items-end justify-between gap-2 px-2">
+                  <div className="w-full h-40 flex items-end justify-between gap-2 px-2 border-b border-gray-800 pb-2">
                     {[30, 50, 40, 70, 90, 60, 100].map((h, i) => (
                       <motion.div
                         key={i}
@@ -200,8 +154,16 @@ export default function App() {
                   </div>
                 </div>
                 
-                <div className="bg-gray-900 mx-2 mb-4 mt-auto rounded-2xl p-4 flex items-center justify-between border border-gray-800">
-                  <div className="font-bold">Next Trip</div>
+                <div className="bg-gray-900 mx-2 mb-6 mt-auto rounded-2xl p-4 flex items-center justify-between border border-gray-800 cursor-pointer hover:bg-gray-800 transition-colors">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-taxi-yellow/20 rounded-full flex items-center justify-center">
+                      <Navigation className="text-taxi-yellow" size={20} />
+                    </div>
+                    <div>
+                      <div className="font-bold">Next Trip Available</div>
+                      <div className="text-xs text-gray-400">2.5 km away • Surge +₹50</div>
+                    </div>
+                  </div>
                   <ChevronRight size={20} className="text-gray-500" />
                 </div>
               </div>
@@ -210,182 +172,143 @@ export default function App() {
         </div>
       </section>
 
-      {/* Move Section (User) */}
-      <section id="user" className="py-24 bg-[#F8F9FA] text-asphalt-black relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1 relative perspective-[1000px]">
-            <motion.div 
-              initial={{ opacity: 0, rotateX: 20, y: 50 }}
-              whileInView={{ opacity: 1, rotateX: 0, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
-              className="bg-white p-2 rounded-[2rem] shadow-2xl aspect-[9/16] max-w-[300px] mx-auto relative z-10 border border-gray-100"
-            >
-              <div className="bg-gray-50 rounded-[1.5rem] w-full h-full overflow-hidden relative">
-                 <div className="absolute inset-0 bg-[#E8F0F2]">
-                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-taxi-yellow/20 rounded-full animate-ping"></div>
-                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                      <div className="w-6 h-6 bg-taxi-yellow rounded-full shadow-lg border-2 border-white relative z-10"></div>
-                   </div>
-                 </div>
-                 {/* Route Info Overlay */}
-                 <motion.div 
-                  initial={{ y: 100 }}
-                  whileInView={{ y: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="absolute bottom-4 left-4 right-4 bg-white rounded-2xl p-4 shadow-lg text-sm"
-                 >
-                    <div className="flex justify-between items-center mb-3">
-                      <span className="font-bold text-lg">Connaught Place</span>
-                      <span className="font-bold text-taxi-yellow">8 min</span>
-                    </div>
-                    <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: "0%" }}
-                        whileInView={{ width: "60%" }}
-                        transition={{ duration: 1.5, delay: 0.8 }}
-                        className="h-full bg-taxi-yellow"
-                      />
-                    </div>
-                 </motion.div>
-              </div>
-            </motion.div>
-            
-            {/* Decorative Elements */}
-            <motion.div 
-              initial={{ x: -100, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.5, type: "spring" }}
-              className="absolute top-1/4 -right-8 lg:-right-12 bg-white rounded-2xl p-4 shadow-xl flex items-center gap-4 border border-gray-100 z-20"
-            >
-              <div className="w-12 h-12 bg-taxi-yellow rounded-full flex items-center justify-center">
-                <Car className="text-white" />
-              </div>
-              <div>
-                <div className="text-xs text-gray-500 font-bold uppercase tracking-wider">Driver arriving</div>
-                <div className="font-black text-xl">AF-2894</div>
-              </div>
-            </motion.div>
-          </div>
-          
-          <div className="order-1 lg:order-2">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight">Tap. Ride. Arrive.</h2>
-            <p className="text-lg text-gray-600 mb-10 leading-relaxed font-medium">
-              Getting around your city has never been this simple. Request a ride in seconds and let Move handle the rest with transparent pricing and real-time tracking.
+      {/* Driver Benefits Section */}
+      <section id="benefits" className="py-24 bg-[#F8F9FA] text-asphalt-black relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight">Why Drive With Mover?</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto font-medium">
+              We've built our platform around what drivers need most. More earnings, better tools, and complete flexibility.
             </p>
-            <div className="grid sm:grid-cols-2 gap-6">
-              <FeatureCard 
-                icon={Navigation}
-                title="Live Tracking"
-                description="Watch your driver approach on the map in real-time."
-              />
-              <FeatureCard 
-                icon={CreditCard}
-                title="Upfront Pricing"
-                description="Know exactly what you'll pay before you even book."
-              />
-              <FeatureCard 
-                icon={ShieldCheck}
-                title="Safety First"
-                description="Share your trip status with friends and family instantly."
-              />
-              <FeatureCard 
-                icon={Clock}
-                title="Schedule Ahead"
-                description="Book rides up to 30 days in advance for peace of mind."
-              />
-            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <FeatureCard 
+              icon={TrendingUp}
+              title="Keep More Earnings"
+              description="Enjoy industry-leading low commission rates. We believe you should keep the lion's share of what you make."
+            />
+            <FeatureCard 
+              icon={Clock}
+              title="Drive When You Want"
+              description="No minimum hours, no schedules. Turn the app on when you're ready to earn, turn it off when you're done."
+            />
+            <FeatureCard 
+              icon={CreditCard}
+              title="Instant Cash Out"
+              description="Don't wait for payday. Transfer your earnings to your bank account instantly, up to 5 times a day."
+            />
+            <FeatureCard 
+              icon={Map}
+              title="Smart Heatmaps"
+              description="Our predictive maps show you exactly where demand will be highest so you can maximize your time."
+            />
+            <FeatureCard 
+              icon={ShieldCheck}
+              title="24/7 Driver Support"
+              description="We've got your back. Access our dedicated driver support team anytime you need assistance on the road."
+            />
+            <FeatureCard 
+              icon={Car}
+              title="Vehicle Rewards"
+              description="Get exclusive discounts on fuel, maintenance, and insurance through our driver partner programs."
+            />
           </div>
         </div>
       </section>
 
-      {/* Mover Section (Driver) */}
-      <section id="driver" className="py-24 bg-asphalt-black relative overflow-hidden">
+      {/* Earnings & Safety Section */}
+      <section id="earnings" className="py-24 bg-asphalt-black relative overflow-hidden">
         {/* Background Grid */}
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)', backgroundSize: '60px 60px', transform: 'perspective(500px) rotateX(60deg) scale(2) translateY(-100px)' }}></div>
         
         <div className="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center relative z-10">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-taxi-yellow/10 text-taxi-yellow text-sm font-medium mb-6">
-              <TrendingUp size={16} />
-              High Earnings Potential
+              <ShieldCheck size={16} />
+              Driver Safety First
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight">Be the Mover.<br/>Earn on your terms.</h2>
-            <p className="text-lg text-gray-400 mb-10 leading-relaxed font-medium">
-              Turn your vehicle into a business. With Mover, you have the flexibility to drive whenever you want, wherever you want, and keep more of what you earn.
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight">Your safety is our top priority.</h2>
+            <p className="text-lg text-gray-400 mb-8 leading-relaxed font-medium">
+              We vet every rider on our platform and provide in-app emergency tools so you can drive with peace of mind, day or night.
             </p>
-            <div className="grid sm:grid-cols-2 gap-6">
-              <FeatureCard 
-                icon={TrendingUp}
-                title="Instant Payouts"
-                description="Cash out your earnings instantly, up to 5 times a day."
-                dark
-              />
-              <FeatureCard 
-                icon={Map}
-                title="Smart Heatmaps"
-                description="See real-time demand to find the busiest areas and surge pricing."
-                dark
-              />
-            </div>
+            
+            <ul className="space-y-6">
+              <li className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center shrink-0 mt-1">
+                  <div className="w-3 h-3 bg-taxi-yellow rounded-full"></div>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold mb-1">Rider Verification</h4>
+                  <p className="text-gray-400">All riders must pass basic verification and have a valid payment method before requesting a ride.</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center shrink-0 mt-1">
+                  <div className="w-3 h-3 bg-taxi-yellow rounded-full"></div>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold mb-1">Emergency Button</h4>
+                  <p className="text-gray-400">Instantly connect with local authorities or our 24/7 incident response team right from the app.</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center shrink-0 mt-1">
+                  <div className="w-3 h-3 bg-taxi-yellow rounded-full"></div>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold mb-1">Trip Tracking</h4>
+                  <p className="text-gray-400">Share your live location and trip status with trusted contacts while you're online.</p>
+                </div>
+              </li>
+            </ul>
           </div>
 
           <div className="relative perspective-[1000px] h-[500px] flex items-center justify-center">
-            {/* Isometric abstract city block (built with CSS) */}
-            <motion.div 
-              style={{ rotateX: 60, rotateZ: -45 }}
-              className="relative w-64 h-64 bg-gray-900 border border-gray-800 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center justify-center z-10"
-            >
-               {/* Buildings */}
-               <motion.div 
-                 initial={{ height: 10 }}
-                 whileInView={{ height: 80 }}
-                 transition={{ duration: 1 }}
-                 className="absolute bottom-4 left-4 w-12 bg-gray-800 shadow-[-5px_0_0_rgba(255,255,255,0.05)] border-t border-gray-700" 
-                 style={{ transformStyle: 'preserve-3d' }}
-               />
-               <motion.div 
-                 initial={{ height: 10 }}
-                 whileInView={{ height: 120 }}
-                 transition={{ duration: 1, delay: 0.2 }}
-                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 bg-gray-800 shadow-[-5px_0_0_rgba(255,255,255,0.05)] border-t border-taxi-yellow" 
-               >
-                 <div className="absolute inset-0 bg-taxi-yellow/20 animate-pulse"></div>
-               </motion.div>
-               <motion.div 
-                 initial={{ height: 10 }}
-                 whileInView={{ height: 60 }}
-                 transition={{ duration: 1, delay: 0.1 }}
-                 className="absolute top-4 right-4 w-12 bg-gray-800 shadow-[-5px_0_0_rgba(255,255,255,0.05)] border-t border-gray-700" 
-               />
-
-               {/* Paths */}
-               <svg className="absolute inset-0 w-full h-full p-2" viewBox="0 0 100 100" preserveAspectRatio="none">
-                  <path d="M 0,50 L 50,50 L 50,0" fill="none" stroke="#FFCC00" strokeWidth="2" strokeDasharray="4 2" className="opacity-50" />
-                  <path d="M 50,50 L 100,50" fill="none" stroke="#FFCC00" strokeWidth="3" className="glow-yellow animate-pulse" />
-               </svg>
-            </motion.div>
-
-            {/* Hovering Dashboard Dashboard UI */}
+            {/* Dashboard UI mockup */}
             <motion.div
-              initial={{ opacity: 0, y: 50, rotateX: 20 }}
-              whileInView={{ opacity: 1, y: -40, rotateX: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="absolute top-10 w-full max-w-[320px] bg-asphalt-black/95 backdrop-blur-xl border border-gray-800 rounded-2xl p-5 shadow-2xl z-20"
+              initial={{ opacity: 0, scale: 0.9, rotateX: 20 }}
+              whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
+              transition={{ duration: 0.8 }}
+              className="w-full max-w-md bg-gray-900 border border-gray-800 rounded-3xl p-6 shadow-2xl z-20 relative overflow-hidden"
             >
-              <div className="text-xs text-taxi-yellow font-bold uppercase mb-1 tracking-wider">Surge Active</div>
-              <div className="text-white font-bold text-xl mb-4">+ ₹80 next trip</div>
-              <div className="h-16 flex items-end gap-1">
-                {[1, 2, 3, 5, 8, 4, 2].map((h, i) => (
-                  <motion.div 
-                    key={i}
-                    initial={{ height: 0 }}
-                    whileInView={{ height: `${h * 10}%` }}
-                    transition={{ delay: 1 + (i * 0.1) }}
-                    className="flex-1 bg-gradient-to-t from-taxi-yellow/20 to-taxi-yellow rounded-t-sm"
-                  />
-                ))}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-taxi-yellow/10 rounded-bl-full blur-2xl"></div>
+              
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-800">
+                  <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?q=80&w=200&auto=format&fit=crop" alt="Driver profile" className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold">Rahul Sharma</h3>
+                  <div className="flex items-center gap-1 text-taxi-yellow text-sm">
+                    ★ 4.98 Rating • 1,240 Trips
+                  </div>
+                </div>
               </div>
+
+              <div className="bg-asphalt-black rounded-2xl p-5 border border-gray-800 mb-6">
+                <div className="text-sm text-gray-400 mb-2">This Week's Payout</div>
+                <div className="text-4xl font-black mb-4">₹18,450</div>
+                
+                <div className="space-y-3">
+                  <div className="flex justify-between text-sm">
+                     <span className="text-gray-400">Trip Fares</span>
+                     <span>₹14,200</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                     <span className="text-gray-400">Surge Multipliers</span>
+                     <span className="text-taxi-yellow">+ ₹2,800</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                     <span className="text-gray-400">Tips</span>
+                     <span className="text-green-400">+ ₹1,450</span>
+                  </div>
+                </div>
+              </div>
+              
+              <button className="w-full py-4 rounded-xl bg-white text-asphalt-black font-bold text-lg hover:bg-gray-100 transition-colors">
+                Cash Out Now
+              </button>
             </motion.div>
           </div>
         </div>
@@ -397,16 +320,14 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
           <div className="max-w-xl">
             <h2 className="text-4xl lg:text-5xl font-black mb-6 tracking-tight leading-[1.1]">
-              Ready to Move<br/>or be a Mover?
+              Ready to start earning?
             </h2>
             <p className="text-xl font-medium mb-8 opacity-80">
-              Join millions of users and drivers in the network today. It takes less than 2 minutes to get started.
+              Join millions of drivers who are already earning on their own terms. Download the APK and sign up in minutes.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href={`${USER_APK_URL}?v=${APK_VERSION}`} download className="inline-block text-center bg-asphalt-black text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-900 transition-transform hover:scale-105 active:scale-95 shadow-xl">
-                Get the App
-              </a>
-              <a href={`${DRIVER_APK_URL}?v=${APK_VERSION}`} download className="inline-block text-center bg-transparent border-2 border-asphalt-black text-asphalt-black px-8 py-4 rounded-xl font-bold text-lg hover:bg-black/5 transition-transform hover:scale-105 active:scale-95">
+              <a href={DRIVER_APK_URL} download className="inline-flex items-center gap-3 bg-asphalt-black text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-900 transition-transform hover:scale-105 active:scale-95 shadow-xl">
+                <Smartphone size={24} />
                 Download Driver APK
               </a>
             </div>
@@ -432,7 +353,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12 mt-20 pt-8 border-t border-black/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm font-medium">
           <div className="flex items-center gap-2 text-asphalt-black">
             <AppLogo className="w-8 h-8" dark={false} />
-            <span className="font-bold tracking-tight text-xl">Move<span className="text-white">.</span></span>
+            <span className="font-bold tracking-tight text-xl">Mover<span className="text-white">.</span></span>
             <span className="ml-4 opacity-70">© 2026 Move Technologies Inc.</span>
           </div>
           <div className="flex gap-6 opacity-70">
